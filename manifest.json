@@ -1,0 +1,62 @@
+{
+    "manifest_version": 3,
+    "name": "C&M Jenkins Extension",
+    "version": "1.0",
+    "description": "C&M Jenkins Extension",
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs",
+        "notifications",
+        "contextMenus",
+        "cookies",
+        "webRequest"
+    ],
+    "host_permissions": [
+        "http://ci1.chipsnmedia.com/*",
+        "http://ci2.chipsnmedia.com/*"
+    ],
+    "optional_host_permissions": [
+        "*://*/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://ci1.chipsnmedia.com/job/*/*",
+                "http://ci2.chipsnmedia.com/job/*/*"
+            ],
+            "js": [
+                "scripts/job_filter.js"
+            ],
+            "css": [
+                "scripts/job_filter.css"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "images/*",
+                "*.css"
+            ],
+            "matches": [
+                "*://*/*"
+            ]
+        }
+    ],
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        },
+        "default_title": "C&M Jenkins Extension",
+        "default_popup": "popup/popup.html"
+    }
+}

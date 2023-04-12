@@ -1,0 +1,63 @@
+.success_button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.success_button:hover {
+    background-color: #3e8e41;
+}
+
+.failed_button {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.failed_button:hover {
+    background-color: #da190b;
+}
+
+.rerun_button {
+    background-color: #008CBA; /* Blue */
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.rerun_button:hover {
+    background-color: #006a8b;
+}
+
+/* underline */
+.username_text {
+    font-weight: 400;
+    font-size: 14px;
+    text-align: right;
+    color: grey;
+    font-style: italic;
+    text-decoration: underline;
+}
