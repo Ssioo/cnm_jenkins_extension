@@ -1,7 +1,27 @@
-# cnm_jenkins_extension
-- 개발환경: Chrome Extension v3, Vanila Javascript
-- 설치방법: Release -> source.zip 다운받아 chrome extension에 등록.
-  - 참고: https://support.google.com/chrome/a/answer/2714278?hl=ko
+<img src="https://user-images.githubusercontent.com/41153640/231344394-d25251c7-77c0-455a-ba96-44291ab80246.png" width="256" height="256" align="right"/>
+
+# C&M Jenkins+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSsioo%2Fcnm_jenkins_extension&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+<span><img src="https://img.shields.io/badge/Chrome Extension V3-4285F4?style=flat&logo=Google Chrome&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/></span>
+
+:star: Star me on GitHub — it motivates me a lot!
+
+[C&M Jenkins+](https://github.com/Ssioo/cnm_jenkins_extension) 는 크롬 익스텐션 기반의 C&M 젠킨스 생산성을 높여줄 툴입니다. 크롬 익스텐션에 설치하고 사용해보세요. 
+
+## Table of Content
+- [Installation](#installation)
+- [Features](#features)
+    - [Extended Parent Job](#extended-parent-job)
+    - [Extended Build History](#extended-build-history)
+- [Contribution](#contribution)
+
+
+# Installation
+Release -> source.zip 다운받아 chrome extension에 등록.
+- 참고: https://support.google.com/chrome/a/answer/2714278?hl=ko
 
 # Features
 ## Extended Parent Job
