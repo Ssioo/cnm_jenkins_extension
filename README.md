@@ -20,7 +20,7 @@
 
 
 # Installation
-Release -> source.zip 다운받아 chrome extension에 등록.
+Releases -> Source code.zip 다운받아 chrome extension에 등록.
 - 참고: https://support.google.com/chrome/a/answer/2714278?hl=ko
 
 # Features
