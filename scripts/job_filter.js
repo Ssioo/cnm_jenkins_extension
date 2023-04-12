@@ -11,7 +11,7 @@ const initParentJob = () => {
         }
         const subJobUrl = c.children[0].children[0].children[0].children[1].href
         const req = new XMLHttpRequest()
-        req.onload = () => { 
+        req.onload = () => {
             if (req.status === 200) {
                 let rawStr = req.responseText
                 const userName = rawStr.substring(rawStr.indexOf("Started by user")).split("</a>")[0].split(">")[1]
@@ -102,13 +102,16 @@ const initSubJob = () => {
 
     document.getElementsByTagName('h2')[0].parentElement.insertBefore(filterObj, document.getElementsByTagName('h2')[0])
 }
-
 window.addEventListener('load', () => {
-    // if window.location.pathname is form of regular expression '/job/*/<number>/' then it is subjob page
-    // else if it is form of '/job/*/' it is parent job page
-    if (window.location.pathname.match(/\/job\/.*\/\d+\//)) {
+    // if window.location.pathname is form of regular expression '/job/*/<number>/' or '/view/*/job/*/<number>/' then it is subjob page
+    // else if it is form of regular expression '/job/*/' or '/view/*/job/*/' it is parent job page
+    if (window.location.pathname.match(/\/job\/.+\/\d+\//) || window.location.pathname.match(/\/view\/.*\/job\/.+\/\d+\//)) {
+        console.log("subjob")
         initSubJob()
-    } else {
+    } else if (window.location.pathname.match(/\/job\/.+\//) || window.location.pathname.match(/\/view\/.*\/job\/.+\//)) {
+        console.log("parentjob")
         initParentJob()
+    } else {
+        console.log("not job", window.location.pathname)
     }
 })
