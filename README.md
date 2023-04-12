@@ -1,4 +1,7 @@
 # cnm_jenkins_extension
+- 개발환경: Chrome Extension v3, Vanila Javascript
+- 설치방법: Release -> source.zip 다운받아 chrome extension에 등록.
+  - 참고: https://support.google.com/chrome/a/answer/2714278?hl=ko
 
 # Features
 ## Extended Parent Job
@@ -9,3 +12,6 @@
 ## Extended Build History
 - 빌드 요약에 해당 빌드 수행자 이름 확인 가능. 
 ![image](https://user-images.githubusercontent.com/41153640/231343035-a32a31a3-32fd-4b78-b52d-866840887bc4.png)
+
+# Contribution
+Generate a pull request.
