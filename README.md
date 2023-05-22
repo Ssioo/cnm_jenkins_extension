@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/41153640/231344394-d25251c7-77c0-455a-ba96-44291ab80246.png" width="256" height="256" align="right"/>
+<img src="https://user-images.githubusercontent.com/41153640/231414935-d0fa4901-4a61-49d0-bcb9-f64e2c07f8cd.png" width="224" height="224" align="right"/>
 
 # C&M Jenkins+
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSsioo%2Fcnm_jenkins_extension&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
