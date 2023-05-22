@@ -102,10 +102,81 @@ const initSubJob = () => {
 
     document.getElementsByTagName('h2')[0].parentElement.insertBefore(filterObj, document.getElementsByTagName('h2')[0])
 }
+
+const autoFillBuild = () => {
+    const buildParams = document.getElementsByName('parameter')
+    for (let p of buildParams) {
+        if (p.children[0].value === "USER_NAME") {
+            p.children[1].value = "niel.cho"
+        }
+    }
+}
+
+let intervalId = null
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+const simplifyBuildQueue = () => {
+    let buildQueueCount = 0
+    const summaryBuildQueueDiv = document.createElement('div')
+    summaryBuildQueueDiv.id = "summaryBuildQueue"
+    summaryBuildQueueDiv.style = "display: flex; justify-content: center; margin: 0 0 0 0; flex-direction: column;"
+
+    const summaryBuildQueueTitle = document.createElement('div')
+    summaryBuildQueueTitle.style = "background-color: var(--panel-header-bg-color); padding: 0.5rem 1.25rem;"
+    summaryBuildQueueTitle.className = "pane-header-title"
+    // buildQueueCount thousand comma split
+    summaryBuildQueueTitle.innerHTML = `Build Queue Summary (${numberWithCommas(buildQueueCount)})`
+    summaryBuildQueueDiv.appendChild(summaryBuildQueueTitle)
+
+    const summaryBuildQueueDivContent = document.createElement('div')
+    summaryBuildQueueDivContent.style = "display: flex; flex-direction: column;"
+    summaryBuildQueueDiv.appendChild(summaryBuildQueueDivContent)
+
+    document.getElementById('side-panel').insertBefore(summaryBuildQueueDiv, document.getElementById('side-panel').childNodes[1])
+    intervalId = setInterval(() => {
+        const queueTable = document.getElementById('buildQueue').children[1].children[0].children[1]
+        const jobQueues = []
+        buildQueueCount = 0
+        for (let row of queueTable.children) {
+            const jobname = row.children[0].children[0].innerHTML.split("<button")[0].split("<wbr>").join("")
+            let found = false
+            for (let p = 0; p < jobQueues.length; p++) {
+                if (jobQueues[p][0] === jobname) {
+                    jobQueues[p][1]++
+                    found = true
+                }
+            }
+            if (!found) {   
+                jobQueues.push([jobname, 1])
+            }
+            buildQueueCount++
+        }
+        summaryBuildQueueTitle.innerHTML = `Build Queue Summary (${numberWithCommas(buildQueueCount)})`
+        let newSummary = ""
+        jobQueues.forEach((item) => {
+            newSummary += `<div style="display: flex; flex-direction: row; padding: 0.5rem 0 0.25rem 1rem; ">
+            <span style="flex: 1; font-weight: 600; text-decoration: underline; font-size: var(--font-size-xs);">${item[0]}</span>
+            <span>(${item[1]})</span>
+            </div>\n`
+        })
+        summaryBuildQueueDivContent.innerHTML = newSummary
+    }, 1000)
+}
+
 window.addEventListener('load', () => {
     // if window.location.pathname is form of regular expression '/job/*/<number>/' or '/view/*/job/*/<number>/' then it is subjob page
     // else if it is form of regular expression '/job/*/' or '/view/*/job/*/' it is parent job page
-    if (window.location.pathname.match(/\/job\/.+\/\d+\//) || window.location.pathname.match(/\/view\/.*\/job\/.+\/\d+\//)) {
+    // else if it is form of regular expression '/job/*/build' or '/view/*/job/*/build' it is build page
+    // else if it is '/' it is root page
+    if (window.location.pathname === '/') {
+        simplifyBuildQueue()
+    } else if (window.location.pathname.match(/\/job\/.+\/build/) || window.location.pathname.match(/\/view\/.*\/job\/.+\/build/)) {
+        console.log("build")
+        autoFillBuild()
+    } else if (window.location.pathname.match(/\/job\/.+\/\d+\//) || window.location.pathname.match(/\/view\/.*\/job\/.+\/\d+\//)) {
         console.log("subjob")
         initSubJob()
     } else if (window.location.pathname.match(/\/job\/.+\//) || window.location.pathname.match(/\/view\/.*\/job\/.+\//)) {
@@ -114,4 +185,8 @@ window.addEventListener('load', () => {
     } else {
         console.log("not job", window.location.pathname)
     }
+})
+
+window.addEventListener("unload", () => {
+    clearInterval(intervalId)
 })
