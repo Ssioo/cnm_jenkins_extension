@@ -103,13 +103,27 @@ const initSubJob = () => {
     document.getElementsByTagName('h2')[0].parentElement.insertBefore(filterObj, document.getElementsByTagName('h2')[0])
 }
 
-const autoFillBuild = () => {
+const extendBuildScreen = () => {
     const buildParams = document.getElementsByName('parameter')
     for (let p of buildParams) {
         if (p.children[0].value === "USER_NAME") {
             p.children[1].value = "niel.cho"
         }
+
+        if (p.children[0].value === "WORK_DIR") {
+            const checkBtn = document.createElement('div')
+            checkBtn.innerHTML = "Check"
+            checkBtn.onclick = () => {
+                const targetPath = p.children[1].value
+                let localPath = targetPath.replace("/nstream", "file://52.2.12.200/data")
+                localPath = localPath.replace("/Stream", "file://52.2.12.41")
+                console.log(localPath)
+                window.open(localPath)
+            }
+            p.appendChild(checkBtn)
+        }
     }
+
 }
 
 let intervalId = null
@@ -175,7 +189,7 @@ window.addEventListener('load', () => {
         simplifyBuildQueue()
     } else if (window.location.pathname.match(/\/job\/.+\/build/) || window.location.pathname.match(/\/view\/.*\/job\/.+\/build/)) {
         console.log("build")
-        autoFillBuild()
+        extendBuildScreen()
     } else if (window.location.pathname.match(/\/job\/.+\/\d+\//) || window.location.pathname.match(/\/view\/.*\/job\/.+\/\d+\//)) {
         console.log("subjob")
         initSubJob()
