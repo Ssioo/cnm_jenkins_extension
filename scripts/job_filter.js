@@ -109,19 +109,14 @@ const extendBuildScreen = () => {
         if (p.children[0].value === "USER_NAME") {
             p.children[1].value = "niel.cho"
         }
+        p.parentElement.parentElement.children[0].style = "font-size: 1.0rem;"
+    }
 
-        if (p.children[0].value === "WORK_DIR") {
-            const checkBtn = document.createElement('div')
-            checkBtn.innerHTML = "Check"
-            checkBtn.onclick = () => {
-                const targetPath = p.children[1].value
-                let localPath = targetPath.replace("/nstream", "file://52.2.12.200/data")
-                localPath = localPath.replace("/Stream", "file://52.2.12.41")
-                console.log(localPath)
-                window.open(localPath)
-            }
-            p.appendChild(checkBtn)
-        }
+    const forms = document.getElementsByClassName('jenkins-form-item')
+    for (let f of forms) {
+        const divider = document.createElement('div')
+        divider.style = "height: 2px; background-color: var(--panel-header-bg-color); margin: 1rem 0 0 0;"
+        f.appendChild(divider)
     }
 
 }
